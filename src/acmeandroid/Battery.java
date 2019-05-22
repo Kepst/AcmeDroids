@@ -12,6 +12,7 @@ package acmeandroid;
 public class Battery {
     
     private static final double MAX_LEVEL = 8;
+    private static final double RECHARGE_RATE = (8 / 3);
     
     private double currentLevel;
     
