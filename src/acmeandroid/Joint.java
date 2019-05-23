@@ -8,15 +8,14 @@ public class Joint {
 
     protected final int voltageRequired;
     private final int maxFlexionAngle;
-
     private int currentFlexionAngle;
-
-    private double motionSpeed = 0;
+    private double motionSpeed;
 
     public Joint(int voltageRequired, int maxFlexionAngle, int currentFlexionAngle) {
         this.voltageRequired = voltageRequired;
         this.maxFlexionAngle = maxFlexionAngle;
         this.currentFlexionAngle = currentFlexionAngle;
+        this.motionSpeed = 0;
     }
 
     public void setSpeed(double speed) {
