@@ -16,7 +16,7 @@ public class AcmeAndroid {
                 Android android = new Android();
             }
         };
-        thread.start();  
+        thread.start();
     }
 
 }
