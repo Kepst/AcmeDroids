@@ -11,7 +11,8 @@ public class AcmeAndroid {
      */
     public static void main(String[] args) {
         Android android = new Android();
-        android.standUp();
+        double time = 0;
+        android.standUp(time);
     }
 
 }
