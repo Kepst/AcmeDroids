@@ -20,7 +20,7 @@ public class Android {
     private Joint shoulder2;
     private Joint neck;
     private Joint head;
-    private int battery;
+    private double batteryLevel;
     
     public Android () {
         this.ankle1 = new Joint(3, 30, 0);
@@ -38,40 +38,67 @@ public class Android {
         this.shoulder2 = new RotatingJoint(2, 180, 0, 360, 0);
         this.neck = new Joint(3, 30, 0);
         this.head = new RotatingJoint(3, 180, 0, 180, 0);
-
-        this.battery = 8;
+        this.batteryLevel = 8;
     }
 
     public void update(double time) {
-        this.battery -= this.ankle1.update(time);
-        this.battery -= this.ankle2.update(time);
-        this.battery -= this.knee1.update(time);
-        this.battery -= this.knee2.update(time);
-        this.battery -= this.hip1.update(time);
-        this.battery -= this.hip2.update(time);
-        this.battery -= this.waist.update(time);
-        this.battery -= this.wrist1.update(time);
-        this.battery -= this.wrist2.update(time);
-        this.battery -= this.elbow1.update(time);
-        this.battery -= this.elbow2.update(time);
-        this.battery -= this.shoulder1.update(time);
-        this.battery -= this.shoulder2.update(time);
-        this.battery -= this.neck.update(time);
-        this.battery -= this.head.update(time);
+        this.batteryLevel -= this.ankle1.update(time);
+        this.batteryLevel -= this.ankle2.update(time);
+        this.batteryLevel -= this.knee1.update(time);
+        this.batteryLevel -= this.knee2.update(time);
+        this.batteryLevel -= this.hip1.update(time);
+        this.batteryLevel -= this.hip2.update(time);
+        this.batteryLevel -= this.waist.update(time);
+        this.batteryLevel -= this.wrist1.update(time);
+        this.batteryLevel -= this.wrist2.update(time);
+        this.batteryLevel -= this.elbow1.update(time);
+        this.batteryLevel -= this.elbow2.update(time);
+        this.batteryLevel -= this.shoulder1.update(time);
+        this.batteryLevel -= this.shoulder2.update(time);
+        this.batteryLevel -= this.neck.update(time);
+        this.batteryLevel -= this.head.update(time);
 
-        this.battery += time * 8/3;
-        if(this.battery > 8){
-            this.battery = 8;
+        this.batteryLevel += time * 8 / 3;
+        
+        if(this.batteryLevel > 8){
+            this.batteryLevel = 8;
         }
-        if(this.battery < 1){
+        if(this.batteryLevel < 1){
             System.out.println("Android broke");
         }
+        System.out.println(this.batteryLevel);
     }
 
     public void standUp(){
         this.waist.setSpeed(15);
         this.update(2);
         this.waist.setSpeed(0);
+        this.update(1);
+        this.knee1.setSpeed(-7.5);
+        this.knee2.setSpeed(-7.5);
         
+        this.update(6);
+        System.out.println(this.knee1.getCurrentFlexionAngle());
+        this.knee1.setSpeed(0);
+        this.knee2.setSpeed(0);
+        this.hip1.setSpeed(-5.3);
+        this.hip2.setSpeed(-5.3);
+        this.update(8.5);
+        System.out.println(this.hip1.getCurrentFlexionAngle());
+        this.hip1.setSpeed(0);
+        this.hip2.setSpeed(0);
+        this.knee1.setSpeed(-7.5);
+        this.knee2.setSpeed(-7.5);
+        
+        this.update(6);
+        System.out.println(this.knee1.getCurrentFlexionAngle());
+        this.knee1.setSpeed(0);
+        this.knee2.setSpeed(0);
+        this.hip1.setSpeed(-5.3);
+        this.hip2.setSpeed(-5.3);
+        this.update(8.5);
+        this.hip1.setSpeed(0);
+        this.hip2.setSpeed(0);
+        System.out.println(this.hip1.getCurrentFlexionAngle());
     }
 }

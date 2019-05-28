@@ -30,7 +30,13 @@ public class Joint {
         if (this.currentFlexionAngle < 0) {
             this.currentFlexionAngle = 0;
         }
-        double battery = time * this.voltageRequired * this.motionSpeed / 15;
+        double battery = time * this.voltageRequired * Math.abs(this.motionSpeed / 15);
         return battery;
     }
+
+    public int getCurrentFlexionAngle() {
+        return currentFlexionAngle;
+    }
+    
+    
 }
