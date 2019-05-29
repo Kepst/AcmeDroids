@@ -35,4 +35,9 @@ public class RotatingJoint extends Joint {
         battery += time * this.voltageRequired * this.rotationSpeed / 15;
         return battery;
     }
+
+    public double getCurrentRotationAngle() {
+        return currentRotationAngle;
+    }
+    
 }

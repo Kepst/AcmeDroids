@@ -11,7 +11,7 @@ public class AcmeAndroid {
      */
     public static void main(String[] args) {
         Android android = new Android();
-        double time = 0;
+        Integer time = 0; //miliseconds
         android.standUp(time);
     }
 

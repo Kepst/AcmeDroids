@@ -8,7 +8,7 @@ public class Joint {
 
     protected final int voltageRequired;
     private final int maxFlexionAngle;
-    private int currentFlexionAngle;
+    private double currentFlexionAngle;
     private double motionSpeed;
 
     public Joint(int voltageRequired, int maxFlexionAngle, int currentFlexionAngle) {
@@ -23,18 +23,18 @@ public class Joint {
     }
 
     public double update(double time) {
-        this.currentFlexionAngle += this.motionSpeed * time;
+        this.currentFlexionAngle += this.motionSpeed * time / 1000;
         if (this.currentFlexionAngle > maxFlexionAngle) {
             this.currentFlexionAngle = this.maxFlexionAngle;
         }
         if (this.currentFlexionAngle < 0) {
             this.currentFlexionAngle = 0;
         }
-        double battery = time * this.voltageRequired * Math.abs(this.motionSpeed / 15);
+        double battery = time * this.voltageRequired * Math.abs(this.motionSpeed / 15) / 1000;
         return battery;
     }
 
-    public int getCurrentFlexionAngle() {
+    public double getCurrentFlexionAngle() {
         return currentFlexionAngle;
     }
     
