@@ -12,7 +12,14 @@ public class AcmeAndroid {
     public static void main(String[] args) {
         Android android = new Android();
         Integer time = 0; //miliseconds
-        android.standUp(time);
+        System.out.println("-----Getting up-----");
+        time = android.standUp(time);
+        System.out.println("-----First step-----");
+        time = android.firstStep(time);
+        System.out.println("-----Walking-----");
+        time = android.stepLeft(time);
+        time = android.stepRight(time);
+
     }
 
 }

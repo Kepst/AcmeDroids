@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - AcmeAndroid",
+            "request": "launch",
+            "mainClass": "acmeandroid.AcmeAndroid",
+            "projectName": "AcmeAndroid_3a866d81"
+        }
+    ]
+}

@@ -103,7 +103,7 @@ public class Android {
             time += 1;
             if (time % 1000 == 0) {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(10); //CHANGE BACK TO 1000
 
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Android.class
@@ -137,14 +137,14 @@ public class Android {
     }
 
     public void printChanges(int previous, double current, String name) {
-        String differenceForamtted = String.format("%.2f", (current
+        String differenceFormatted = String.format("%.2f", (current
                     - this.previousSecondAngles[previous]));
         String currentFormatted = String.format("%.2f", current);
         if (current < this.previousSecondAngles[previous]) {
-            System.out.println(name + ": " + currentFormatted + " (" + differenceForamtted + ")");
+            System.out.println(name + ": " + currentFormatted + " (" + differenceFormatted + ")");
             this.previousSecondAngles[previous] = current;
         } else if (current > this.previousSecondAngles[previous]) {
-            System.out.println(name + ": " + currentFormatted + " (+" + differenceForamtted + ")");
+            System.out.println(name + ": " + currentFormatted + " (+" + differenceFormatted + ")");
             this.previousSecondAngles[previous] = current;
         }
     }
@@ -193,5 +193,44 @@ public class Android {
         return time;
     }
 
-    
+    public int firstStep(int time){
+        this.knee1.setSpeed(5);
+        this.hip1.setSpeed(5);
+        time = this.update(3000, time);
+        //System.out.println(this.hip1.getCurrentFlexionAngle());
+
+        this.knee1.setSpeed(0);
+        this.hip1.setSpeed(0);
+        this.ankle2.setSpeed(10);
+        time = this.update(1000, time);
+        //System.out.println(this.ankle2.getCurrentFlexionAngle());
+
+        this.ankle2.setSpeed(0);
+        return time;
+    }
+
+    public int stepLeft(int time){
+        this.knee2.setSpeed(5);
+        this.hip2.setSpeed(5);
+        time = this.update(3000, time);
+
+        this.knee2.setSpeed(0);
+        this.hip2.setSpeed(0);
+        this.ankle1.setSpeed(10);
+        time = this.update(1000, time);
+        
+        this.ankle1.setSpeed(0);
+        // this.knee1.setSpeed(-5);
+        // this.hip1.setSpeed(-5);
+        // time = this.update(3000, time);
+        // System.out.println(this.hip1.getCurrentFlexionAngle());
+        
+
+        return time;
+    }
+
+	public int stepRight(int time) {
+		return time;
+	}
+
 }
