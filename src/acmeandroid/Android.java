@@ -213,8 +213,8 @@ public class Android {
                         + "\nRight Shoulder(flex): %.2f (rotation): %.2f\nLeft Shoulder(flex): %.2f (rotation): %.2f\n"
                         + "Neck: %.2f\nHead(flex): %.2f (rotation):%.2f",
                 this.ankle1.getCurrentFlexionAngle(), this.ankle2.getCurrentFlexionAngle(),
-                this.knee2.getCurrentFlexionAngle(), this.hip1.getCurrentFlexionAngle(),
-                this.knee1.getCurrentFlexionAngle(), this.hip2.getCurrentFlexionAngle(),
+                this.knee1.getCurrentFlexionAngle(), this.knee2.getCurrentFlexionAngle(),
+                this.hip1.getCurrentFlexionAngle(), this.hip2.getCurrentFlexionAngle(),
                 this.waist.getCurrentFlexionAngle(), this.waist.getCurrentRotationAngle(),
                 this.wrist1.getCurrentFlexionAngle(), this.wrist2.getCurrentFlexionAngle(),
                 this.elbow1.getCurrentFlexionAngle(), this.elbow2.getCurrentFlexionAngle(),
@@ -295,9 +295,9 @@ public class Android {
     }
 
     public int stepRight(int time) {
-        this.knee1.setSpeed(7.5);
-        this.hip1.setSpeed(7.5);
-        time = this.update(2000, time);
+        this.knee1.setSpeed(5);
+        this.hip1.setSpeed(5);
+        time = this.update(3000, time);
 
         this.knee1.setSpeed(0);
         this.hip1.setSpeed(0);
@@ -322,9 +322,9 @@ public class Android {
     }
 
     public int stepLeft(int time) {
-        this.knee2.setSpeed(7.5);
-        this.hip2.setSpeed(7.5);
-        time = this.update(2000, time);
+        this.knee2.setSpeed(5);
+        this.hip2.setSpeed(5);
+        time = this.update(3000, time);
 
         this.knee2.setSpeed(0);
         this.hip2.setSpeed(0);
@@ -346,19 +346,20 @@ public class Android {
     }
 
     public int lastStep(int time) {
-        this.knee1.setSpeed(5);
-        this.hip1.setSpeed(5);
+        this.knee1.setSpeed(-5);
+        this.hip1.setSpeed(-5);
         time = this.update(3000, time);
         // System.out.println(this.hip1.getCurrentFlexionAngle());
-
         this.knee1.setSpeed(0);
         this.hip1.setSpeed(0);
-        this.ankle2.setSpeed(10);
+        this.ankle2.setSpeed(-10);
         time = this.update(1000, time);
         // System.out.println(this.ankle2.getCurrentFlexionAngle());
-
         this.ankle2.setSpeed(0);
-        System.out.println(this.showPositions());
+        return time;
+    }
+
+    public int sitDown(int time) {
         return time;
     }
 

@@ -38,16 +38,24 @@ public class AcmeAndroid {
 
         System.out.println("-----Getting up-----");
         time = android.standUp(time);
+        System.out.println(android.showPositions());
 
         System.out.println("\n-----First step-----");
         time = android.firstStep(time);
-        // System.out.println(android.showPositions());
+        System.out.println(android.showPositions());
 
         System.out.println("\n-----Walking-----");
 
         time = android.stepLeft(time);
-        // System.out.println(android.showPositions());
+        System.out.println(android.showPositions());
         time = android.stepRight(time);
+        System.out.println(android.showPositions());
+
+        time = android.lastStep(time);
+        System.out.println(android.showPositions());
+
+        // time = android.sitDown(time);
+        // System.out.println(android.showPositions());
 
         System.out.println();
 
