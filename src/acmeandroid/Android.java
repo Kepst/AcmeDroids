@@ -150,8 +150,7 @@ public class Android {
 
                 // Prints current time, battery level and angle changes since last second
                 String batteryLvl = String.format("%.2f", this.batteryLevel);
-                System.out.println("\nTime: " + (time / 1000) + " s\nBattery level: " +
-                batteryLvl);
+                System.out.println("\nTime: " + (time / 1000) + " s\nBattery level: " + batteryLvl);
                 this.printChanges(0, this.ankle1.getCurrentFlexionAngle(), "Ankle 1 (flex)");
                 this.printChanges(1, this.ankle2.getCurrentFlexionAngle(), "Ankle 2 (flex)");
                 this.printChanges(2, this.knee1.getCurrentFlexionAngle(), "Knee 1 (flex)");
@@ -234,35 +233,35 @@ public class Android {
      * @return time when robot has finished standing up
      */
     public int standUp(int time) {
-                // Waist goes forward 30 degrees
+        // Waist goes forward 30 degrees
         this.waist.setSpeed(15);
         time = this.update(2000, time);
         this.waist.setSpeed(0);
-        
+
         // Recharging for one second
         time = this.update(1000, time);
-        
+
         // Knees open 45 degrees
         this.knee1.setSpeed(-7.5);
         this.knee2.setSpeed(-7.5);
         time = this.update(6000, time);
         this.knee1.setSpeed(0);
         this.knee2.setSpeed(0);
-        
+
         // Hips open 45 degress
         this.hip1.setSpeed(-5.3);
         this.hip2.setSpeed(-5.3);
         time = this.update(8500, time);
         this.hip1.setSpeed(0);
         this.hip2.setSpeed(0);
-        
+
         // Knees open another 45 degrees
         this.knee1.setSpeed(-7.5);
         this.knee2.setSpeed(-7.5);
         time = this.update(6500, time);
         this.knee1.setSpeed(0);
         this.knee2.setSpeed(0);
-        
+
         // Hips open another 45 degrees
         this.hip1.setSpeed(-5.3);
         this.hip2.setSpeed(-5.3);
@@ -278,7 +277,20 @@ public class Android {
         time = this.update(2000, time);
         this.waist.setSpeed(0);
 
+        return time;
+    }
 
+    public int firstStep(int time) {
+        this.knee1.setSpeed(5);
+        this.hip1.setSpeed(5);
+        time = this.update(3000, time);
+        // System.out.println(this.hip1.getCurrentFlexionAngle());
+        this.knee1.setSpeed(0);
+        this.hip1.setSpeed(0);
+        this.ankle2.setSpeed(10);
+        time = this.update(1000, time);
+        // System.out.println(this.ankle2.getCurrentFlexionAngle());
+        this.ankle2.setSpeed(0);
         return time;
     }
 
@@ -309,34 +321,30 @@ public class Android {
 
     }
 
-    public int firstStep(int time) {
-        this.knee1.setSpeed(5);
-    }
-    
     public int stepLeft(int time) {
         this.knee2.setSpeed(7.5);
         this.hip2.setSpeed(7.5);
         time = this.update(2000, time);
-        
+
         this.knee2.setSpeed(0);
         this.hip2.setSpeed(0);
         this.ankle2.setSpeed(-10);
         time = this.update(1000, time);
-        
+
         this.ankle2.setSpeed(0);
         this.knee1.setSpeed(-5);
         this.hip1.setSpeed(-5);
         time = this.update(3000, time);
-        
+
         this.hip1.setSpeed(0);
         this.ankle1.setSpeed(10);
         time = this.update(1000, time);
         this.ankle1.setSpeed(0);
 
         return time;
-    
+
     }
-    
+
     public int lastStep(int time) {
         this.knee1.setSpeed(5);
         this.hip1.setSpeed(5);
