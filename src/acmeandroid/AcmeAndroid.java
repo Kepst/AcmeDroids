@@ -20,6 +20,8 @@ public class AcmeAndroid {
         time = android.stepLeft(time);
         time = android.stepRight(time);
 
+        android.showPositions();
+
     }
 
 }
