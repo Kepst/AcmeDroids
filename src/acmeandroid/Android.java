@@ -287,14 +287,14 @@ public class Android {
      * @return the real time after the movement
      */
     public int firstStep(int time) {
-        // left knee and hip close 15 degrees
+        // Left knee and hip close 15 degrees
         this.knee1.setSpeed(5);
         this.hip1.setSpeed(5);
         time = this.update(3000, time);
         this.knee1.setSpeed(0);
         this.hip1.setSpeed(0);
         
-        // right ankle opens 10 degrees
+        // Right ankle opens 10 degrees
         this.ankle2.setSpeed(10);
         time = this.update(1000, time);
         this.ankle2.setSpeed(0);
@@ -309,6 +309,7 @@ public class Android {
      * @return the real time after the movement
      */
     public int stepLeft(int time) {
+        // left knee and hip open 15 degrees
         this.knee2.setSpeed(5);
         this.hip2.setSpeed(5);
         time = this.update(3000, time);
@@ -339,7 +340,7 @@ public class Android {
      * @return the real time after the movement
      */
     public int stepRight(int time) {
-        // left knee and hip open 15 degrees
+        // right knee and hip open 15 degrees
         this.knee1.setSpeed(5);
         this.hip1.setSpeed(5);
         time = this.update(3000, time);
@@ -351,7 +352,7 @@ public class Android {
         time = this.update(1000, time);
         this.ankle1.setSpeed(0);
         
-        // right knee and hip 
+        // left knee and hip closes 15 degrees
         this.knee2.setSpeed(-5);
         this.hip2.setSpeed(-5);
         time = this.update(3000, time);

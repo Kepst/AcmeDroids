@@ -54,6 +54,7 @@ public class AcmeAndroid {
         time = android.lastStep(time);
         System.out.println(android.showPositions());
 
+        System.out.println("\n-----Sitting down-----");
         time = android.sitDown(time);
         System.out.println(android.showPositions());
 
