@@ -349,4 +349,21 @@ public class Android {
 
     }
 
+    public int lastStep(int time) {
+        this.knee1.setSpeed(5);
+        this.hip1.setSpeed(5);
+        time = this.update(3000, time);
+        // System.out.println(this.hip1.getCurrentFlexionAngle());
+
+        this.knee1.setSpeed(0);
+        this.hip1.setSpeed(0);
+        this.ankle2.setSpeed(10);
+        time = this.update(1000, time);
+        // System.out.println(this.ankle2.getCurrentFlexionAngle());
+
+        this.ankle2.setSpeed(0);
+        System.out.println(this.showPositions());
+        return time;
+    }
+
 }
