@@ -19,8 +19,9 @@ public class AcmeAndroid {
         System.out.println("-----Walking-----");
         time = android.stepLeft(time);
         time = android.stepRight(time);
-
-        android.showPositions();
+        
+        System.out.println();
+        System.out.println(android.showPositions());
 
     }
 

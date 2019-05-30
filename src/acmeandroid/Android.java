@@ -137,29 +137,22 @@ public class Android {
     }
 
     public String showPositions() {
-        String positions = String.format("Positions of each joint:\nRight Ankle: %.2f\nLeft Ankle: %.2f\n"
-                + "Right Knee: %.2f\nLeft Knee: %.2f\nRight Hip: %.2f\nLeft Hip: %.2f\nWaist(flex): %.2f "+
-                "(rotation): %.2f\nRight Wrist: %.2f\nLeft Wrist: %.2f\nRight Elbow: %.2f\nLeft Elbow: %.2f"+
-                "\nRight Shoulder(flex): %.2f (rotation): %.2f\n");
-        this.ankle1.getCurrentFlexionAngle();
-        this.printChanges(1, this.ankle2.getCurrentFlexionAngle(), "Ankle 2 (flex)");
-        this.printChanges(2, this.knee1.getCurrentFlexionAngle(), "Knee 1 (flex)");
-        this.printChanges(3, this.knee2.getCurrentFlexionAngle(), "Knee 1 (flex)");
-        this.printChanges(4, this.hip1.getCurrentFlexionAngle(), "Hip 1 (flex)");
-        this.printChanges(5, this.hip2.getCurrentFlexionAngle(), "Hip 1 (flex)");
-        this.printChanges(6, this.waist.getCurrentFlexionAngle(), "Waist (flex)");
-        this.printChanges(7, this.waist.getCurrentRotationAngle(), "Waist (rotation)");
-        this.printChanges(8, this.wrist1.getCurrentFlexionAngle(), "Wrist 1 (flex)");
-        this.printChanges(9, this.wrist2.getCurrentFlexionAngle(), "Wrist 2 (flex)");
-        this.printChanges(10, this.elbow1.getCurrentFlexionAngle(), "Elbow 1 (flex)");
-        this.printChanges(11, this.elbow2.getCurrentFlexionAngle(), "Elbow 2 (flex)");
-        this.printChanges(12, this.shoulder1.getCurrentFlexionAngle(), "Shoulder 1 (flex)");
-        this.printChanges(13, this.shoulder1.getCurrentRotationAngle(), "Shoulder 1 (rotation)");
-        this.printChanges(14, this.shoulder2.getCurrentFlexionAngle(), "Shoulder 2 (flex)");
-        this.printChanges(15, this.shoulder2.getCurrentRotationAngle(), "Shoulder 2 (rotation)");
-        this.printChanges(16, this.neck.getCurrentFlexionAngle(), "Neck (flex)");
-        this.printChanges(17, this.head.getCurrentFlexionAngle(), "Head (flex)");
-        this.printChanges(18, this.head.getCurrentRotationAngle(), "Head (rotation)");
+        String positions = String.format(
+                "Positions of each joint:\nRight Ankle: %.2f\nLeft Ankle: %.2f\n"
+                        + "Right Knee: %.2f\nLeft Knee: %.2f\nRight Hip: %.2f\nLeft Hip: %.2f\nWaist(flex): %.2f "
+                        + "(rotation): %.2f\nRight Wrist: %.2f\nLeft Wrist: %.2f\nRight Elbow: %.2f\nLeft Elbow: %.2f"
+                        + "\nRight Shoulder(flex): %.2f (rotation): %.2f\nLeft Shoulder(flex): %.2f (rotation): %.2f\n"
+                        + "Neck: %.2f\nHead(flex): %.2f (rotation):%.2f",
+                this.ankle1.getCurrentFlexionAngle(), this.ankle2.getCurrentFlexionAngle(),
+                this.knee2.getCurrentFlexionAngle(), this.hip1.getCurrentFlexionAngle(),
+                this.knee1.getCurrentFlexionAngle(), this.hip2.getCurrentFlexionAngle(),
+                this.waist.getCurrentFlexionAngle(), this.waist.getCurrentRotationAngle(),
+                this.wrist1.getCurrentFlexionAngle(), this.wrist2.getCurrentFlexionAngle(),
+                this.elbow1.getCurrentFlexionAngle(), this.elbow2.getCurrentFlexionAngle(),
+                this.shoulder1.getCurrentFlexionAngle(), this.shoulder1.getCurrentRotationAngle(),
+                this.shoulder2.getCurrentFlexionAngle(), this.shoulder2.getCurrentRotationAngle(),
+                this.neck.getCurrentFlexionAngle(), this.head.getCurrentFlexionAngle(),
+                this.head.getCurrentRotationAngle());
 
         return positions;
     }
