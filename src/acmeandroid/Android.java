@@ -309,6 +309,34 @@ public class Android {
 
     }
 
+    public int firstStep(int time) {
+        this.knee1.setSpeed(5);
+    }
+    
+    public int stepLeft(int time) {
+        this.knee2.setSpeed(7.5);
+        this.hip2.setSpeed(7.5);
+        time = this.update(2000, time);
+        
+        this.knee2.setSpeed(0);
+        this.hip2.setSpeed(0);
+        this.ankle2.setSpeed(-10);
+        time = this.update(1000, time);
+        
+        this.ankle2.setSpeed(0);
+        this.knee1.setSpeed(-5);
+        this.hip1.setSpeed(-5);
+        time = this.update(3000, time);
+        
+        this.hip1.setSpeed(0);
+        this.ankle1.setSpeed(10);
+        time = this.update(1000, time);
+        this.ankle1.setSpeed(0);
+
+        return time;
+    
+    }
+    
     public int lastStep(int time) {
         this.knee1.setSpeed(5);
         this.hip1.setSpeed(5);
