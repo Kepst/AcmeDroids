@@ -143,7 +143,7 @@ public class Android {
             if (time % 1000 == 0) {
                 // Makes program sleep for a second
                 try {
-                    Thread.sleep(50); // CHANGE BACK TO 1000
+                    Thread.sleep(1000); // CHANGE BACK TO 1000
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Android.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -360,6 +360,51 @@ public class Android {
     }
 
     public int sitDown(int time) {
+        
+        // Waist goes forward 30 degrees
+        this.waist.setSpeed(15);
+        time = this.update(2000, time);
+        this.waist.setSpeed(0);
+
+        // Recharging for one second
+        time = this.update(1000, time);
+
+        // Knees closes 45 degrees
+        this.knee1.setSpeed(7.5);
+        this.knee2.setSpeed(7.5);
+        time = this.update(6000, time);
+        this.knee1.setSpeed(0);
+        this.knee2.setSpeed(0);
+
+        // Hips closes 45 degress
+        this.hip1.setSpeed(5.3);
+        this.hip2.setSpeed(5.3);
+        time = this.update(8500, time);
+        this.hip1.setSpeed(0);
+        this.hip2.setSpeed(0);
+
+        // Knees closes another 45 degrees
+        this.knee1.setSpeed(7.5);
+        this.knee2.setSpeed(7.5);
+        time = this.update(6500, time);
+        this.knee1.setSpeed(0);
+        this.knee2.setSpeed(0);
+
+        // Hips closes another 45 degrees
+        this.hip1.setSpeed(5.3);
+        this.hip2.setSpeed(5.3);
+        time = this.update(8500, time);
+        this.hip1.setSpeed(0);
+        this.hip2.setSpeed(0);
+
+        // Recharging
+        time = this.update(1000, time);
+
+        // Waist goes back 30 degrees
+        this.waist.setSpeed(-15);
+        time = this.update(2000, time);
+        this.waist.setSpeed(0);
+
         return time;
     }
 

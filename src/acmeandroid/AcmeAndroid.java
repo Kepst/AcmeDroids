@@ -54,10 +54,8 @@ public class AcmeAndroid {
         time = android.lastStep(time);
         System.out.println(android.showPositions());
 
-        // time = android.sitDown(time);
-        // System.out.println(android.showPositions());
-
-        System.out.println();
+        time = android.sitDown(time);
+        System.out.println(android.showPositions());
 
     }
 }
