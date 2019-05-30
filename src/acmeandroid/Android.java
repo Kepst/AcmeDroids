@@ -280,47 +280,34 @@ public class Android {
         return time;
     }
 
+    /**
+     * Makes the robot give its first half step
+     * 
+     * @param time holds the real time 
+     * @return the real time after the movement
+     */
     public int firstStep(int time) {
+        // left knee and hip close 15 degrees
         this.knee1.setSpeed(5);
         this.hip1.setSpeed(5);
         time = this.update(3000, time);
-        // System.out.println(this.hip1.getCurrentFlexionAngle());
         this.knee1.setSpeed(0);
         this.hip1.setSpeed(0);
-        this.ankle2.setSpeed(10);
-        time = this.update(1000, time);
-        // System.out.println(this.ankle2.getCurrentFlexionAngle());
-        this.ankle2.setSpeed(0);
-        return time;
-    }
-
-    public int stepRight(int time) {
-        this.knee1.setSpeed(5);
-        this.hip1.setSpeed(5);
-        time = this.update(3000, time);
-
-        this.knee1.setSpeed(0);
-        this.hip1.setSpeed(0);
-        this.ankle1.setSpeed(-10);
-        time = this.update(1000, time);
-
-        this.ankle2.setSpeed(0);
-        this.ankle1.setSpeed(0);
-        this.knee2.setSpeed(-5);
-        this.hip2.setSpeed(-5);
-        time = this.update(3000, time);
-        // System.out.println(this.hip1.getCurrentFlexionAngle());
-
-        this.knee2.setSpeed(0);
-        this.hip2.setSpeed(0);
+        
+        // right ankle opens 10 degrees
         this.ankle2.setSpeed(10);
         time = this.update(1000, time);
         this.ankle2.setSpeed(0);
-
+        
         return time;
-
     }
 
+    /**
+     * Makes the robot give a full left step
+     * 
+     * @param time holds the real time 
+     * @return the real time after the movement
+     */
     public int stepLeft(int time) {
         this.knee2.setSpeed(5);
         this.hip2.setSpeed(5);
@@ -344,21 +331,68 @@ public class Android {
         return time;
 
     }
+    
+    /**
+     * Makes the robot give a full right step
+     * 
+     * @param time holds the real time 
+     * @return the real time after the movement
+     */
+    public int stepRight(int time) {
+        // left knee and hip open 15 degrees
+        this.knee1.setSpeed(5);
+        this.hip1.setSpeed(5);
+        time = this.update(3000, time);
+        this.knee1.setSpeed(0);
+        this.hip1.setSpeed(0);
+        
+        // right ankle closes 10 degrees
+        this.ankle1.setSpeed(-10);
+        time = this.update(1000, time);
+        this.ankle1.setSpeed(0);
+        
+        // right knee and hip 
+        this.knee2.setSpeed(-5);
+        this.hip2.setSpeed(-5);
+        time = this.update(3000, time);
+        this.knee2.setSpeed(0);
+        this.hip2.setSpeed(0);
+        
+        this.ankle2.setSpeed(10);
+        time = this.update(1000, time);
+        this.ankle2.setSpeed(0);
 
+        return time;
+
+    }
+
+    /**
+     * Makes the robot give a final half step
+     * 
+     * @param time holds the real time 
+     * @return the real time after the movement
+     */
     public int lastStep(int time) {
+        
         this.knee1.setSpeed(-5);
         this.hip1.setSpeed(-5);
         time = this.update(3000, time);
-        // System.out.println(this.hip1.getCurrentFlexionAngle());
         this.knee1.setSpeed(0);
         this.hip1.setSpeed(0);
+        
         this.ankle2.setSpeed(-10);
         time = this.update(1000, time);
-        // System.out.println(this.ankle2.getCurrentFlexionAngle());
         this.ankle2.setSpeed(0);
+        
         return time;
     }
 
+    /**
+     * Makes the robot sit down from a standing position
+     * 
+     * @param time holds the real time 
+     * @return the real time after the movement
+     */
     public int sitDown(int time) {
         
         // Waist goes forward 30 degrees
