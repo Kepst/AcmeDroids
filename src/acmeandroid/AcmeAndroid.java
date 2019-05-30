@@ -34,20 +34,22 @@ public class AcmeAndroid {
      */
     public static void main(String[] args) {
         Android android = new Android();
-        Integer time = 0; //miliseconds
-        
+        Integer time = 0; // miliseconds
+
         System.out.println("-----Getting up-----");
         time = android.standUp(time);
-        
+
         System.out.println("\n-----First step-----");
         time = android.firstStep(time);
-        
+        // System.out.println(android.showPositions());
+
         System.out.println("\n-----Walking-----");
+
         time = android.stepLeft(time);
+        // System.out.println(android.showPositions());
         time = android.stepRight(time);
-        
+
         System.out.println();
-        System.out.println(android.showPositions());
 
     }
 }

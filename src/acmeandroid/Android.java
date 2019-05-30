@@ -47,11 +47,11 @@ public class Android {
     private final Joint neck;
     private final RotatingJoint head;
     private final double previousSecondAngles[];
-    private double batteryLevel;
+    public double batteryLevel;
 
     /**
-     * Constructor for object of class <code>Android</code> where the angles of
-     * the articulation are set in an initial sitting position
+     * Constructor for object of class <code>Android</code> where the angles of the
+     * articulation are set in an initial sitting position
      */
     public Android() {
         this.ankle1 = new Joint(3, 30, 0);
@@ -70,25 +70,25 @@ public class Android {
         this.neck = new Joint(3, 30, 0);
         this.head = new RotatingJoint(3, 180, 0, 180, 0);
         this.batteryLevel = 8.0;
-        this.previousSecondAngles = new double[]{this.ankle1.getCurrentFlexionAngle(),
-            this.ankle2.getCurrentFlexionAngle(), this.knee1.getCurrentFlexionAngle(),
-            this.knee2.getCurrentFlexionAngle(), this.hip1.getCurrentFlexionAngle(),
-            this.hip2.getCurrentFlexionAngle(), this.waist.getCurrentFlexionAngle(),
-            this.waist.getCurrentRotationAngle(), this.wrist1.getCurrentFlexionAngle(),
-            this.wrist2.getCurrentFlexionAngle(), this.elbow1.getCurrentFlexionAngle(),
-            this.elbow2.getCurrentFlexionAngle(), this.shoulder1.getCurrentFlexionAngle(),
-            this.shoulder1.getCurrentRotationAngle(), this.shoulder2.getCurrentFlexionAngle(),
-            this.shoulder2.getCurrentRotationAngle(), this.neck.getCurrentFlexionAngle(),
-            this.head.getCurrentFlexionAngle(), this.head.getCurrentRotationAngle()};
+        this.previousSecondAngles = new double[] { this.ankle1.getCurrentFlexionAngle(),
+                this.ankle2.getCurrentFlexionAngle(), this.knee1.getCurrentFlexionAngle(),
+                this.knee2.getCurrentFlexionAngle(), this.hip1.getCurrentFlexionAngle(),
+                this.hip2.getCurrentFlexionAngle(), this.waist.getCurrentFlexionAngle(),
+                this.waist.getCurrentRotationAngle(), this.wrist1.getCurrentFlexionAngle(),
+                this.wrist2.getCurrentFlexionAngle(), this.elbow1.getCurrentFlexionAngle(),
+                this.elbow2.getCurrentFlexionAngle(), this.shoulder1.getCurrentFlexionAngle(),
+                this.shoulder1.getCurrentRotationAngle(), this.shoulder2.getCurrentFlexionAngle(),
+                this.shoulder2.getCurrentRotationAngle(), this.neck.getCurrentFlexionAngle(),
+                this.head.getCurrentFlexionAngle(), this.head.getCurrentRotationAngle() };
     }
 
     /**
-     * Receives a time interval and updates all angles in all articulation
-     * depending on their motion speed, as well as updates battery level
-     * checking for full charge and low level below critical limit
+     * Receives a time interval and updates all angles in all articulation depending
+     * on their motion speed, as well as updates battery level checking for full
+     * charge and low level below critical limit
      *
-     * @param timeInterval holds the time interval used to update angles and
-     * battery level
+     * @param timeInterval holds the time interval used to update angles and battery
+     *                     level
      */
     public void updateAngles(double timeInterval) {
 
@@ -124,7 +124,8 @@ public class Android {
      * Repeatedly updates angles and battery level for a certain period of time
      *
      * @param movementTime holds the total movement time in milliseconds
-     * @param time holds the current time since the robot first started moving
+     * @param time         holds the current time since the robot first started
+     *                     moving
      * @return the time when the total movement is finished
      */
     public int update(int movementTime, int time) {
@@ -142,14 +143,15 @@ public class Android {
             if (time % 1000 == 0) {
                 // Makes program sleep for a second
                 try {
-                    Thread.sleep(10); // CHANGE BACK TO 1000
+                    Thread.sleep(50); // CHANGE BACK TO 1000
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Android.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
                 // Prints current time, battery level and angle changes since last second
                 String batteryLvl = String.format("%.2f", this.batteryLevel);
-                System.out.println("\nTime: " + (time / 1000) + " s\nBattery level: " + batteryLvl);
+                System.out.println("\nTime: " + (time / 1000) + " s\nBattery level: " +
+                batteryLvl);
                 this.printChanges(0, this.ankle1.getCurrentFlexionAngle(), "Ankle 1 (flex)");
                 this.printChanges(1, this.ankle2.getCurrentFlexionAngle(), "Ankle 2 (flex)");
                 this.printChanges(2, this.knee1.getCurrentFlexionAngle(), "Knee 1 (flex)");
@@ -177,15 +179,18 @@ public class Android {
     /**
      * Prints changes in articulation angles second by second
      *
-     * @param previousSecondIndex holds the index used to retrieve the angle of
-     * the specific articulation 1 second before from the array containing all
-     * the angles in the previous second
-     * @param currentAngle holds the current angle of the specific articulation
-     * @param jointName holds the name of the articulation and the type of the
-     * angle
+     * @param previousSecondIndex holds the index used to retrieve the angle of the
+     *                            specific articulation 1 second before from the
+     *                            array containing all the angles in the previous
+     *                            second
+     * @param currentAngle        holds the current angle of the specific
+     *                            articulation
+     * @param jointName           holds the name of the articulation and the type of
+     *                            the angle
      */
     public void printChanges(int previousSecondIndex, double currentAngle, String jointName) {
-        String differenceFormatted = String.format("%.2f", (currentAngle - this.previousSecondAngles[previousSecondIndex]));
+        String differenceFormatted = String.format("%.2f",
+                (currentAngle - this.previousSecondAngles[previousSecondIndex]));
         String currentFormatted = String.format("%.2f", currentAngle);
         if (currentAngle < this.previousSecondAngles[previousSecondIndex]) {
             System.out.println(jointName + ": " + currentFormatted + " (" + differenceFormatted + ")");
@@ -204,10 +209,10 @@ public class Android {
     public String showPositions() {
         String positions = String.format(
                 "Positions of each joint:\nRight Ankle: %.2f\nLeft Ankle: %.2f\n"
-                + "Right Knee: %.2f\nLeft Knee: %.2f\nRight Hip: %.2f\nLeft Hip: %.2f\nWaist(flex): %.2f "
-                + "(rotation): %.2f\nRight Wrist: %.2f\nLeft Wrist: %.2f\nRight Elbow: %.2f\nLeft Elbow: %.2f"
-                + "\nRight Shoulder(flex): %.2f (rotation): %.2f\nLeft Shoulder(flex): %.2f (rotation): %.2f\n"
-                + "Neck: %.2f\nHead(flex): %.2f (rotation):%.2f",
+                        + "Right Knee: %.2f\nLeft Knee: %.2f\nRight Hip: %.2f\nLeft Hip: %.2f\nWaist(flex): %.2f "
+                        + "(rotation): %.2f\nRight Wrist: %.2f\nLeft Wrist: %.2f\nRight Elbow: %.2f\nLeft Elbow: %.2f"
+                        + "\nRight Shoulder(flex): %.2f (rotation): %.2f\nLeft Shoulder(flex): %.2f (rotation): %.2f\n"
+                        + "Neck: %.2f\nHead(flex): %.2f (rotation):%.2f",
                 this.ankle1.getCurrentFlexionAngle(), this.ankle2.getCurrentFlexionAngle(),
                 this.knee2.getCurrentFlexionAngle(), this.hip1.getCurrentFlexionAngle(),
                 this.knee1.getCurrentFlexionAngle(), this.hip2.getCurrentFlexionAngle(),
@@ -274,7 +279,7 @@ public class Android {
     /**
      * 
      * @param time
-     * @return 
+     * @return
      */
     public int firstStep(int time) {
         this.knee1.setSpeed(5);
@@ -293,16 +298,16 @@ public class Android {
     }
 
     public int stepLeft(int time) {
-        this.knee2.setSpeed(5);
-        this.hip2.setSpeed(5);
-        time = this.update(3000, time);
+        this.knee2.setSpeed(7.5);
+        this.hip2.setSpeed(7.5);
+        time = this.update(2000, time);
 
         this.knee2.setSpeed(0);
         this.hip2.setSpeed(0);
-        this.ankle1.setSpeed(10);
+        this.ankle2.setSpeed(-10);
         time = this.update(1000, time);
 
-        this.ankle1.setSpeed(0);
+        this.ankle2.setSpeed(0);
         this.knee1.setSpeed(-5);
         this.hip1.setSpeed(-5);
         time = this.update(3000, time);
@@ -312,12 +317,36 @@ public class Android {
         this.hip1.setSpeed(0);
         this.ankle1.setSpeed(10);
         time = this.update(1000, time);
+        this.ankle1.setSpeed(0);
 
         return time;
     }
 
     public int stepRight(int time) {
+        this.knee1.setSpeed(7.5);
+        this.hip1.setSpeed(7.5);
+        time = this.update(2000, time);
+
+        this.knee1.setSpeed(0);
+        this.hip1.setSpeed(0);
+        this.ankle1.setSpeed(-10);
+        time = this.update(1000, time);
+
+        this.ankle2.setSpeed(0);
+        this.ankle1.setSpeed(0);
+        this.knee2.setSpeed(-5);
+        this.hip2.setSpeed(-5);
+        time = this.update(3000, time);
+        // System.out.println(this.hip1.getCurrentFlexionAngle());
+
+        this.knee2.setSpeed(0);
+        this.hip2.setSpeed(0);
+        this.ankle2.setSpeed(10);
+        time = this.update(1000, time);
+        this.ankle2.setSpeed(0);
+
         return time;
+
     }
 
 }
